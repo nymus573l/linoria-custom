@@ -1815,29 +1815,24 @@ do
     end;
 
     function Funcs:AddToggle(Idx, Info)
-        assert(Info.Text, 'AddInput: Missing `Text` string.')
-
         local Toggle = {
             Value = Info.Default or false;
             Type = 'Toggle';
 
-            Callback = Info.Callback or function(Value) end;
             Addons = {},
-            Risky = Info.Risky,
         };
 
         local Groupbox = self;
         local Container = Groupbox.Container;
 
         local ToggleOuter = Library:Create('Frame', {
-            BackgroundColor3 = Color3.new(0, 0, 0);
             BorderColor3 = Color3.new(0, 0, 0);
             Size = UDim2.new(0, 13, 0, 13);
             ZIndex = 5;
-            Parent = Container;
+            Parent = Container; -- monkeyvio
         });
 
-        Library:AddToRegistry(ToggleOuter, {
+        Library:AddToRegistry(ToggleOuter, { -- monkeyvio
             BorderColor3 = 'Black';
         });
 
@@ -1919,9 +1914,9 @@ do
                 end
             end
 
-            Library:SafeCallback(Toggle.Callback, Toggle.Value);
-            Library:SafeCallback(Toggle.Changed, Toggle.Value);
-            Library:UpdateDependencyBoxes();
+            if Toggle.Changed then
+                Toggle.Changed(Toggle.Value)
+            end;
         end;
 
         ToggleRegion.InputBegan:Connect(function(Input)
@@ -1930,12 +1925,6 @@ do
                 Library:AttemptSave();
             end;
         end);
-
-        if Toggle.Risky then
-            Library:RemoveFromRegistry(ToggleLabel)
-            ToggleLabel.TextColor3 = Library.RiskColor
-            Library:AddToRegistry(ToggleLabel, { TextColor3 = 'RiskColor' })
-        end
 
         Toggle:Display();
         Groupbox:AddBlank(Info.BlankSize or 5 + 2);
@@ -1947,10 +1936,9 @@ do
 
         Toggles[Idx] = Toggle;
 
-        Library:UpdateDependencyBoxes();
-
         return Toggle;
     end;
+
 
     function Funcs:AddSlider(Idx, Info)
         assert(Info.Default, 'AddSlider: Missing default value.');
