@@ -5,6 +5,7 @@ local ThemeManager = {} do
 
 	ThemeManager.Library = nil
 	ThemeManager.BuiltInThemes = {
+		['Comet.pub'] 		= { 10, httpService:JSONDecode('{"FontColor":"5E5E5E","MainColor":"0F0F0F","AccentColor":"5D589D","SelectedTabColor":"1a191d","BackgroundColor":"0F0F0F","OutlineColor":"191919"}') },
 		['Linoria PurpleWare'] 	= { 2, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"0a0a0a","AccentColor":"4e2873","BackgroundColor":"0f0f0f","OutlineColor":"0a0a0a"}') },
 		['Default Linoria'] 	= { 1, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"1c1c1c","AccentColor":"0055ff","BackgroundColor":"141414","OutlineColor":"323232"}') },
 		['Fatality']		= { 3, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"1e1842","AccentColor":"c50754","BackgroundColor":"191335","OutlineColor":"3c355d"}') },
@@ -14,7 +15,6 @@ local ThemeManager = {} do
 		['Ubuntu'] 		= { 7, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"3e3e3e","AccentColor":"e2581e","BackgroundColor":"323232","OutlineColor":"191919"}') },
 		['Quartz'] 		= { 8, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"232330","AccentColor":"426e87","BackgroundColor":"1d1b26","OutlineColor":"27232f"}') },
 		['GameSense'] 		= { 9, httpService:JSONDecode('{"FontColor":"919191","MainColor":"101010","AccentColor":"9CB819","SelectedTabColor":"101010","BackgroundColor":"111111","OutlineColor":"2D2D2D"}') },
-		['Comet.pub'] 		= { 10, httpService:JSONDecode('{"FontColor":"5E5E5E","MainColor":"0F0F0F","AccentColor":"5D589D","SelectedTabColor":"1a191d","BackgroundColor":"0F0F0F","OutlineColor":"191919"}') },
 		['Tokyohook.cc'] 	= { 11, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"191925","AccentColor":"6759b3","SelectedTabColor":"1a1a29","BackgroundColor":"16161f","OutlineColor":"433e58"}') },
 		['pandahook.cc'] 	= { 12, httpService:JSONDecode('{"FontColor":"AEAEAE","MainColor":"0F0F0F","AccentColor":"30406A","SelectedTabColor":"151515","BackgroundColor":"0F0F0F","OutlineColor":"171717"}') },
 		['Mae.lua'] 	        = { 13, httpService:JSONDecode('{"FontColor":"c5c5c5","MainColor":"0F0F0F","AccentColor":"ffc6fe","SelectedTabColor":"171717","BackgroundColor":"0f0f0f","OutlineColor":"191919"}') },
