@@ -3064,12 +3064,12 @@ function Library:CreateWindow(...)
             Tabboxes = {};
         };
 
-        local TabButtonWidth = Library:GetTextBounds(Name, Library.Font, 16);
+        local TabButtonWidth = Library:GetTextBounds(Name, Library.Font, 18);
 
         local TabButton = Library:Create('Frame', {
             BackgroundColor3 = Library.BackgroundColor;
             BorderColor3 = Library.OutlineColor;
-            Size = UDim2.new(0, TabButtonWidth + 8 + 4, 1, 0);
+            Size = UDim2.new(0, TabButtonWidth + 12 + 4, 1, 0);
             ZIndex = 1;
             Parent = TabArea;
         });
@@ -3083,6 +3083,7 @@ function Library:CreateWindow(...)
             Position = UDim2.new(0, 0, 0, 0);
             Size = UDim2.new(1, 0, 1, -1);
             Text = Name;
+            TextSize = 16;
             ZIndex = 1;
             Parent = TabButton;
         });
@@ -3114,8 +3115,8 @@ function Library:CreateWindow(...)
         local LeftSide = Library:Create('ScrollingFrame', {
             BackgroundTransparency = 1;
             BorderSizePixel = 0;
-            Position = UDim2.new(0, 8 - 1, 0, 8 - 1);
-            Size = UDim2.new(0.5, -12 + 2, 0, 507 + 2);
+            Position = UDim2.new(0, 10 - 1, 0, 10 - 1);
+            Size = UDim2.new(0.5, -15 + 2, 0, 600 + 2);
             CanvasSize = UDim2.new(0, 0, 0, 0);
             BottomImage = '';
             TopImage = '';
@@ -3127,8 +3128,8 @@ function Library:CreateWindow(...)
         local RightSide = Library:Create('ScrollingFrame', {
             BackgroundTransparency = 1;
             BorderSizePixel = 0;
-            Position = UDim2.new(0.5, 4 + 1, 0, 8 - 1);
-            Size = UDim2.new(0.5, -12 + 2, 0, 507 + 2);
+            Position = UDim2.new(0.5, 5 + 1, 0, 10 - 1);
+            Size = UDim2.new(0.5, -15 + 2, 0, 600 + 2);
             CanvasSize = UDim2.new(0, 0, 0, 0);
             BottomImage = '';
             TopImage = '';
@@ -3138,7 +3139,7 @@ function Library:CreateWindow(...)
         });
 
         Library:Create('UIListLayout', {
-            Padding = UDim.new(0, 8);
+            Padding = UDim.new(0, 10);
             FillDirection = Enum.FillDirection.Vertical;
             SortOrder = Enum.SortOrder.LayoutOrder;
             HorizontalAlignment = Enum.HorizontalAlignment.Center;
@@ -3146,7 +3147,7 @@ function Library:CreateWindow(...)
         });
 
         Library:Create('UIListLayout', {
-            Padding = UDim.new(0, 8);
+            Padding = UDim.new(0, 10);
             FillDirection = Enum.FillDirection.Vertical;
             SortOrder = Enum.SortOrder.LayoutOrder;
             HorizontalAlignment = Enum.HorizontalAlignment.Center;
@@ -3189,7 +3190,7 @@ function Library:CreateWindow(...)
                 BackgroundColor3 = Library.BackgroundColor;
                 BorderColor3 = Library.OutlineColor;
                 BorderMode = Enum.BorderMode.Inset;
-                Size = UDim2.new(1, 0, 0, 507 + 2);
+                Size = UDim2.new(1, 0, 0, 600 + 2);
                 ZIndex = 2;
                 Parent = Info.Side == 1 and LeftSide or RightSide;
             });
@@ -3226,9 +3227,9 @@ function Library:CreateWindow(...)
             });
 
             local GroupboxLabel = Library:CreateLabel({
-                Size = UDim2.new(1, 0, 0, 18);
+                Size = UDim2.new(1, 0, 0, 20);
                 Position = UDim2.new(0, 4, 0, 2);
-                TextSize = 14;
+                TextSize = 16;
                 Text = Info.Name;
                 TextXAlignment = Enum.TextXAlignment.Left;
                 ZIndex = 5;
@@ -3237,8 +3238,8 @@ function Library:CreateWindow(...)
 
             local Container = Library:Create('Frame', {
                 BackgroundTransparency = 1;
-                Position = UDim2.new(0, 4, 0, 20);
-                Size = UDim2.new(1, -4, 1, -20);
+                Position = UDim2.new(0, 4, 0, 24);
+                Size = UDim2.new(1, -4, 1, -24);
                 ZIndex = 1;
                 Parent = BoxInner;
             });
@@ -3258,7 +3259,7 @@ function Library:CreateWindow(...)
                     end;
                 end;
 
-                BoxOuter.Size = UDim2.new(1, 0, 0, 20 + Size + 2 + 2);
+                BoxOuter.Size = UDim2.new(1, 0, 0, 24 + Size + 2 + 2);
             end;
 
             Groupbox.Container = Container;
@@ -3328,7 +3329,7 @@ function Library:CreateWindow(...)
             local TabboxButtons = Library:Create('Frame', {
                 BackgroundTransparency = 1;
                 Position = UDim2.new(0, 0, 0, 1);
-                Size = UDim2.new(1, 0, 0, 18);
+                Size = UDim2.new(1, 0, 0, 20);
                 ZIndex = 5;
                 Parent = BoxInner;
             });
