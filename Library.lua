@@ -137,7 +137,7 @@ function Library:ApplyTextStroke(Inst)
 
     Library:Create('UIStroke', {
         Color = Color3.new(0, 0, 0);
-        Thickness = 1;
+        Thickness = 1.5;
         LineJoinMode = Enum.LineJoinMode.Miter;
         Parent = Inst;
     });
@@ -148,7 +148,7 @@ function Library:CreateLabel(Properties, IsHud)
         BackgroundTransparency = 1;
         Font = Library.Font;
         TextColor3 = Library.FontColor;
-        TextSize = 16;
+        TextSize = 20;
         TextStrokeTransparency = 0;
     });
 
@@ -171,7 +171,7 @@ function Library:MakeDraggable(Instance, Cutoff)
                 Mouse.Y - Instance.AbsolutePosition.Y
             );
 
-            if ObjPos.Y > (Cutoff or 40) then
+            if ObjPos.Y > (Cutoff or 50) then
                 return;
             end;
 
@@ -190,12 +190,12 @@ function Library:MakeDraggable(Instance, Cutoff)
 end;
 
 function Library:AddToolTip(InfoStr, HoverInstance)
-    local X, Y = Library:GetTextBounds(InfoStr, Library.Font, 14);
+    local X, Y = Library:GetTextBounds(InfoStr, Library.Font, 18);
     local Tooltip = Library:Create('Frame', {
         BackgroundColor3 = Library.MainColor,
         BorderColor3 = Library.OutlineColor,
 
-        Size = UDim2.fromOffset(X + 5, Y + 4),
+        Size = UDim2.fromOffset(X + 6, Y + 5),
         ZIndex = 100,
         Parent = Library.ScreenGui,
 
@@ -205,7 +205,7 @@ function Library:AddToolTip(InfoStr, HoverInstance)
     local Label = Library:CreateLabel({
         Position = UDim2.fromOffset(3, 1),
         Size = UDim2.fromOffset(X, Y);
-        TextSize = 14;
+        TextSize = 18;
         Text = InfoStr,
         TextColor3 = Library.FontColor,
         TextXAlignment = Enum.TextXAlignment.Left;
@@ -232,12 +232,12 @@ function Library:AddToolTip(InfoStr, HoverInstance)
 
         IsHovering = true
 
-        Tooltip.Position = UDim2.fromOffset(Mouse.X + 15, Mouse.Y + 12)
+        Tooltip.Position = UDim2.fromOffset(Mouse.X + 18, Mouse.Y + 14)
         Tooltip.Visible = true
 
         while IsHovering do
             RunService.Heartbeat:Wait()
-            Tooltip.Position = UDim2.fromOffset(Mouse.X + 15, Mouse.Y + 12)
+            Tooltip.Position = UDim2.fromOffset(Mouse.X + 18, Mouse.Y + 14)
         end
     end)
 
@@ -437,7 +437,7 @@ do
             BackgroundColor3 = ColorPicker.Value;
             BorderColor3 = Library:GetDarkerColor(ColorPicker.Value);
             BorderMode = Enum.BorderMode.Inset;
-            Size = UDim2.new(0, 28, 0, 14);
+            Size = UDim2.new(0, 40, 0, 20);
             ZIndex = 6;
             Parent = ToggleLabel;
         });
@@ -445,7 +445,7 @@ do
         -- Transparency image taken from https://github.com/matas3535/SplixPrivateDrawingLibrary/blob/main/Library.lua cus i'm lazy
         local CheckerFrame = Library:Create('ImageLabel', {
             BorderSizePixel = 0;
-            Size = UDim2.new(0, 27, 0, 13);
+            Size = UDim2.new(0, 38, 0, 18);
             ZIndex = 5;
             Image = 'http://www.roblox.com/asset/?id=12977615774';
             Visible = not not Info.Transparency;
@@ -461,8 +461,8 @@ do
             Name = 'Color';
             BackgroundColor3 = Color3.new(1, 1, 1);
             BorderColor3 = Color3.new(0, 0, 0);
-            Position = UDim2.fromOffset(DisplayFrame.AbsolutePosition.X, DisplayFrame.AbsolutePosition.Y + 18),
-            Size = UDim2.fromOffset(230, Info.Transparency and 271 or 253);
+            Position = UDim2.fromOffset(DisplayFrame.AbsolutePosition.X, DisplayFrame.AbsolutePosition.Y + 22),
+            Size = UDim2.fromOffset(300, Info.Transparency and 350 or 325);
             Visible = false;
             ZIndex = 15;
             Parent = ScreenGui,
@@ -599,7 +599,6 @@ do
             ZIndex = 20,
             Parent = HueBoxInner;
         });
-
         Library:ApplyTextStroke(HueBox);
 
         local RgbBoxBase = Library:Create(HueBoxOuter:Clone(), {
